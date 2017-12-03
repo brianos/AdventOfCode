@@ -2,7 +2,7 @@
 {
     public static class Processor
     {
-        public static int Process(string input)
+        public static int PartA(string input)
         {
             string inputWithFirstCharacterAppendedToEnd = input + input[0];
 
@@ -16,6 +16,27 @@
                     result += number;
                 }
                 lastNumber = number;
+            }
+            return result;
+        }
+
+        public static int PartB(string input)
+        {
+            string inputDuplicated = input + input;
+            int charactersToProcess = input.Length;
+
+            int result = 0;
+            for (int i = 0; i < charactersToProcess; i++)
+            {
+                int numberToCompareIndex = i + (charactersToProcess / 2);
+                int numberToCompare = int.Parse(inputDuplicated[numberToCompareIndex].ToString());
+
+                int number = int.Parse(inputDuplicated[i].ToString());
+
+                if (number == numberToCompare)
+                {
+                    result += number;
+                }
             }
             return result;
         }
