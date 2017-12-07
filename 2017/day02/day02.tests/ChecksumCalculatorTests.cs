@@ -6,7 +6,7 @@ namespace day02.tests
     public class ChecksumCalculatorTests
     {
         [Test]
-        public void AdventOfCodeSample()
+        public void TestsSuppliedForPartA()
         {
             int[][] input = new int[][] {
                                             new int[] { 5, 1, 5, 9 },
@@ -20,7 +20,7 @@ namespace day02.tests
         }
 
         [Test]
-        public void AdventOfCodeSolution()
+        public void GetProblemSolutionForPartA()
         {
             int[][] input = new int[][] {
                                             new int[] {1640, 590, 93, 958, 73, 1263, 1405, 1363, 737, 712, 1501, 390, 68, 1554, 959, 79},
@@ -43,7 +43,7 @@ namespace day02.tests
 
             var result = ChecksumCalculator.GetChecksum(input);
 
-            Assert.AreEqual(-1, result);
+            Assert.AreEqual(48357, result);
         }
     }
 }
