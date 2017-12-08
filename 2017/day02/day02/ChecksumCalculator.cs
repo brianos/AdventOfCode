@@ -22,11 +22,15 @@ namespace day02
             int checksum = 0;
 
             foreach (int[] row in input)
+            {
                 for (int i = 0; i < row.Length; i++)
+                {
                     for (int j = 0; j < row.Length; j++)
                     {
                         if (i == j)
+                        {
                             continue;
+                        }
 
                         if (row[i] % row[j] == 0)
                         {
@@ -39,6 +43,8 @@ namespace day02
                             i = j = row.Length + 1;
                         }
                     }
+                }
+            }
 
             return checksum;
         }
