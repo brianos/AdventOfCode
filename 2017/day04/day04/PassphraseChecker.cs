@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System;
 
 namespace day04
 {
@@ -26,16 +25,9 @@ namespace day04
 
             foreach (string passphrase in passphrases)
             {
-                var passphraseSegments = passphrase.Split(' ');
-
-                for (int i = 0; i < passphraseSegments.Length; i++)
-                {
-                    char[] passphraseSegmentCharacters = passphraseSegments[i].ToCharArray();
-                    Array.Sort(passphraseSegmentCharacters);
-                    passphraseSegments[i] = new string(passphraseSegmentCharacters);
-                }
-
-                if (!passphraseSegments.GroupBy(x => x.GetHashCode()).Any(g => g.Count() > 1))
+                if (!passphrase.Split(' ')
+                    .Select(p => new string(p.OrderBy(c => c).ToArray()))
+                    .GroupBy(x => x.GetHashCode()).Any(g => g.Count() > 1))
                 {
                     countOfValidPassphrases++;
                 }
