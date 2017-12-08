@@ -542,5 +542,28 @@ namespace day04.tests
 
             Assert.AreEqual(337, result);
         }
+
+        [Test]
+        public void TestsSuppliedForPartB()
+        {
+            var passphrases = new string[] { "abcde fghij",
+                                             "abcde xyz ecdab",
+                                             "a ab abc abd abf abj",
+                                             "iiii oiii ooii oooi oooo",
+                                             "oiii ioii iioi iiio"
+                                           };
+
+            var result = PassphraseChecker.PassphrasesValidPartB(passphrases);
+
+            Assert.AreEqual(3, result);
+        }
+
+        [Test]
+        public void GetProblemSolutionForPartB()
+        {
+            var result = PassphraseChecker.PassphrasesValidPartB(problemInputFromAdventOfCode);
+
+            Assert.AreEqual(231, result);
+        }
     }
 }
