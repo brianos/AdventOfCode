@@ -1,6 +1,6 @@
 ﻿namespace day01
 {
-    public static class Processor
+    public static class CaptchaChecker
     {
         public static int PartA(string input)
         {
