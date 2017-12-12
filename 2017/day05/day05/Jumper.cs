@@ -5,7 +5,7 @@ namespace day05
 {
     public class Jumper
     {
-        public static int ProcessorForPartA(string offsets)
+        public static int Process(string offsets, Func<int, int> incrementStrategy)
         {
             int[] offsetArray = offsets.Split(' ').Select(n => Convert.ToInt32(n)).ToArray();
 
@@ -26,14 +26,31 @@ namespace day05
                 }
                 else
                 {
-                    currentOffset++;
-                    offsetArray[currentPosition] = currentOffset;
+                    offsetArray[currentPosition] = incrementStrategy(currentOffset);
                     currentPosition = newPosition;
                 }
 
             } while (true);
 
             return jumpsRequired;
+        }
+
+        public static int IncrementStrategyForPartA(int currentOffset)
+        {
+            return ++currentOffset;
+        }
+
+        public static int IncrementStrategyForPartB(int currentOffset)
+        {
+            if (currentOffset >= 3)
+            {
+                currentOffset--;
+            }
+            else
+            {
+                currentOffset++;
+            }
+            return currentOffset;
         }
     }
 }
