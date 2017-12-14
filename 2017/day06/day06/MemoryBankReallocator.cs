@@ -6,7 +6,7 @@ namespace day06
 {
     public class MemoryBankReallocator
     {
-        public static int Reallocate(int[] memoryBanks)
+        public static int Reallocate(ref int[] memoryBanks)
         {
             var knownStates = new List<string>();
             do
@@ -28,6 +28,12 @@ namespace day06
             } while (!knownStates.Contains(ConvertIntegerArrayToStringRepresentation(memoryBanks)));
 
             return knownStates.Count;
+        }
+
+        public static int ReallocateTwice(int[] memoryBanks)
+        {
+            Reallocate(ref memoryBanks);
+            return Reallocate(ref memoryBanks);
         }
 
         private static string ConvertIntegerArrayToStringRepresentation(int[] memoryBanks)
