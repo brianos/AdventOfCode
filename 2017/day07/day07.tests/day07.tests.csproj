@@ -50,6 +50,7 @@
     <Compile Include="InputDataParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RootElementLocatorTests.cs" />
+    <Compile Include="TowerBalancerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\day07\day07.csproj">
