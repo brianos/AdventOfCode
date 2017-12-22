@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace day08
 {
     public class RegisterProcessor
     {
-        public static int Process(IEnumerable<string> inputData)
+        public static Tuple<int, int> Process(IEnumerable<string> inputData)
         {
             const int operationTarget = 0;
             const int operation = 1;
@@ -14,6 +15,7 @@ namespace day08
             const int test = 5;
             const int testAmount = 6;
 
+            int maxValueSeen = 0;
             var registers = new Dictionary<string, int>();
 
             foreach (var line in inputData.ToArray())
@@ -32,8 +34,16 @@ namespace day08
                                 inputSegments[operation],
                                 int.Parse(inputSegments[operationAmount]));
                 }
+
+                maxValueSeen =
+                    maxValueSeen < GetMaxValueInRegisters(registers) ? GetMaxValueInRegisters(registers) : maxValueSeen;
             }
 
+            return new Tuple<int, int>(GetMaxValueInRegisters(registers), maxValueSeen);
+        }
+
+        private static int GetMaxValueInRegisters(Dictionary<string, int> registers)
+        {
             return registers.Max(x => x.Value);
         }
 
